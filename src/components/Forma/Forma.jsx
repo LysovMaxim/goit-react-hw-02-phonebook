@@ -1,65 +1,64 @@
 import { Component } from 'react';
-import { nanoid } from 'nanoid';
 
 export class Forma extends Component {
-    state = {
-        name: '',
-        number: '',
-    };
+  state = {
+    name: '',
+    number: '',
+  };
 
-      hendleSubmit = event => {
+  hendleSubmit = event => {
     event.preventDefault();
-    this.props.contacts.push({
-      id: nanoid(),
-      name: this.state.name,
-      number: this.state.number,
-    });
+    const nameContacts = this.props.arr.map(el => el.name.toLowerCase());
+    if (nameContacts.includes(this.state.name.toLowerCase())) {
+      alert(`${this.state.name} is in your contacts`);
+    } else {
+      this.props.onSubmit(this.state.name, this.state.number);
+      this.reset();
+    }
+    console.log(nameContacts)
+  };
 
-    this.reset();
-    };
-    
-      hendleNameTelChange = event => {
+  hendleNameTelChange = event => {
     const { name, value } = event.currentTarget;
     this.setState({ [name]: value });
-    };
+  };
 
-      reset = () => {
+  reset = () => {
     this.setState({ name: '', number: '' });
   };
-    
-    render() {
-        return (
-            <>
-                <h2>Phonebook</h2>
-                <form onSubmit={this.hendleSubmit}>
-                    <label>
-                        Name
-                        <input
-                            type="text"
-                            name="name"
-                            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-                            title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-                            required
-                            value={this.state.name}
-                            onChange={this.hendleNameTelChange}
-                        />
-                    </label>
 
-                    <label>
-                        Number
-                        <input
-                            type="tel"
-                            name="number"
-                            pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-                            title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-                            required
-                            value={this.state.number}
-                            onChange={this.hendleNameTelChange}
-                        />
-                    </label>
-                    <button type="submit">Add contact</button>
-                </form></>
-         
-        )
-    }
+  render() {
+    return (
+      <>
+        <form onSubmit={this.hendleSubmit}>
+          <label>
+            Name
+            <input
+              type="text"
+              name="name"
+              pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+              title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+              required
+              value={this.state.name}
+              onChange={this.hendleNameTelChange}
+            />
+          </label>
+
+          <label>
+            Number
+            <input
+              type="tel"
+              name="number"
+              pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+              title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+              required
+              value={this.state.number}
+              onChange={this.hendleNameTelChange}
+            />
+          </label>
+          <button type="submit">Add contact</button>
+        </form>
+      </>
+    );
+  }
 }
