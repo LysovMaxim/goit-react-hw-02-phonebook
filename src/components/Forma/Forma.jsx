@@ -15,7 +15,6 @@ export class Forma extends Component {
       this.props.onSubmit(this.state.name, this.state.number);
       this.reset();
     }
-    console.log(nameContacts)
   };
 
   hendleNameTelChange = event => {
