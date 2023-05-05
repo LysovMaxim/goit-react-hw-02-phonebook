@@ -1,4 +1,4 @@
-export const Contacts = ({ contacts }) => {
+export const Contacts = ({ contacts}) => {
   return (
     <>
       <h2>Contacts</h2>
@@ -6,7 +6,7 @@ export const Contacts = ({ contacts }) => {
         {contacts.map(el => {
           return (
             <li key={el.id}>
-              {el.name} <span>{el.number}</span>{' '}
+              {el.name} <span>{el.number}</span>
             </li>
           );
         })}
