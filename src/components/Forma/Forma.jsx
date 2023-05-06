@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
+import {Input,FormBtn} from "./Forma.styled"
 
 export class Forma extends Component {
   state = {
@@ -33,7 +34,7 @@ export class Forma extends Component {
         <form onSubmit={this.hendleSubmit}>
           <label>
             Name
-            <input
+            <Input
               type="text"
               name="name"
               pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -46,7 +47,7 @@ export class Forma extends Component {
 
           <label>
             Number
-            <input
+            <Input
               type="tel"
               name="number"
               pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
@@ -56,7 +57,7 @@ export class Forma extends Component {
               onChange={this.hendleNameTelChange}
             />
           </label>
-          <button type="submit">Add contact</button>
+          <FormBtn type="submit">Add contact</FormBtn>
         </form>
       </>
     );

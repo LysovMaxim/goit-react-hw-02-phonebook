@@ -3,6 +3,7 @@ import { Contacts } from './Contacts';
 import { Filter } from './Filter';
 import { Forma } from './Forma';
 import { nanoid } from 'nanoid';
+import {ContainerForm} from "./App.styled"
 
 export class App extends Component {
   state = {
@@ -42,7 +43,7 @@ export class App extends Component {
     const visiblContacts = this.getVisibleContacts();
 
     return (
-      <div>
+      <ContainerForm>
         <h1>Phonebook</h1>
         <Forma onSubmit={this.addContacts} arr={this.state.contacts} />
         <h2>Contacts</h2>
@@ -51,7 +52,7 @@ export class App extends Component {
           contacts={visiblContacts}
           onDeleteContacts={this.deleteContact}
         />
-      </div>
+      </ContainerForm>
     );
   }
 }
