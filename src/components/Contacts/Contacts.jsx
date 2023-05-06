@@ -1,4 +1,6 @@
-export const Contacts = ({ contacts,onDeleteContacts}) => {
+import PropTypes from 'prop-types';
+
+export const Contacts = ({ contacts, onDeleteContacts }) => {
   return (
     <>
       <ul>
@@ -13,5 +15,16 @@ export const Contacts = ({ contacts,onDeleteContacts}) => {
       </ul>
     </>
   );
+};
+
+Contacts.propTypes = {
+  onDeleteContacts: PropTypes.func.isRequired,
+  contacts : PropTypes.arrayOf(
+    PropTypes.exact({
+      id: PropTypes.string.isRequired,
+      number: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+    })
+  ),
 };
 

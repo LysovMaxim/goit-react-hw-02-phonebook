@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import PropTypes from 'prop-types';
 
 export class Forma extends Component {
   state = {
@@ -61,3 +62,7 @@ export class Forma extends Component {
     );
   }
 }
+
+Forma.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};
